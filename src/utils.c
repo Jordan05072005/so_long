@@ -44,26 +44,39 @@ int	strlenchar(char **str, char find)
 	return (compt);
 }
 
-//Collision élément décor et player
-int	col(t_data *d, int y, int x, char obj)
+char	**strrcpy(char **str)
 {
-	if (d->maps[(d->xy[1] + y) / 64][(d->xy[0] + x) / 64] != obj)
-		return(1);
-	return (0);
-}
+	char	**cpy;
+	int		i;
+	int		j;
 
-//Collision etre deux hitbox
-int	col_hitbox(int xy1[2], int xy2[2], int s1, int s2)
-{
-	if (xy1[0] < xy2[0] + s2 && xy1[0] + s1 > xy2[0]
-		&& xy1[1] < xy2[1] + s2 && xy1[1] + s1 > xy2[1])
-		return (1);
-	return (0);
+	i = -1;
+	cpy = malloc((ft_strstrlen(str) + 1) * sizeof(char *));
+	while (str[++i])
+	{
+		j = -1;
+		cpy[i] = malloc((ft_strlen(str[0]) + 1) * sizeof(char));
+		while (str[i][++j] != '\0')
+			cpy[i][j] = str[i][j];
+		cpy[i][j] = '\0';
+	}
+	cpy[i] = 0;
+	return (cpy);
 }
 
 int	current_anim_fight(t_data *d)
 {
-	if (d->etat == 1 || d->etat == 2 && d->frame != 0)
+	if (d->etat == 1 || (d->etat == 2 && d->frame != 0))
 		return (1);
 	return (0);
+}
+
+void	error(int coderr)
+{
+	ft_putstr_fd("Error\n", 1);
+	if (coderr == 1)
+		ft_putstr_fd("Non-compliant Map\n", 1);
+	if (coderr == 2)
+		ft_putstr_fd("Argument invalide or incomplet", 1);
+	exit(1);
 }
