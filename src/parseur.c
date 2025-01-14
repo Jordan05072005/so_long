@@ -78,6 +78,28 @@ int	is_possibly(char **maps, int x, int y)
 		return (0);
 }
 
+int	valid(char **maps)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (maps[i])
+	{
+		j = 0;
+		while (maps[i][j])
+		{
+			if (maps[i][j] != wall && maps[i][j] != empty
+				&& maps[i][j] != collectible && maps[i][j] != player
+				&& maps[i][j] != mob && maps[i][j] != exits)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 char	**parseur(char *path)
 {
 	int		fd;
@@ -99,10 +121,10 @@ char	**parseur(char *path)
 	}
 	maps = ft_split(str, "\r\n");
 	if (charfind(maps, 'E') != 1 || charfind(maps, 'C')
-		< 1 || charfind(maps, 'P') != 1)
+		< 1 || charfind(maps, 'P') != 1 || charfind(maps, 'M') > 1)
 		return (free(str), NULL);
 	cpy = strrcpy(maps);
-	if (is_rectangle(maps) || is_possibly(cpy, 1, 3) == 0)
+	if (is_rectangle(maps) || is_possibly(cpy, 1, 3) == 0 || valid(maps))
 		return (free(str), free_split(cpy), NULL);
 	return (free(str), free_split(cpy), maps);
 }
