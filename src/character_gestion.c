@@ -14,19 +14,19 @@
 
 void	set_sens(int kc, t_data **d)
 {
-	if (kc == KEY_D)
+	if (kc == KEY_RIGHT)
 	{
 		(*d)->sens = 0;
 		(*d)->sens_sprite = 0;
 	}
-	else if (kc == KEY_Q)
+	else if (kc == KEY_LEFT)
 	{
 		(*d)->sens = 1;
 		(*d)->sens_sprite = 1;
 	}
-	else if (kc == KEY_Z)
+	else if (kc == KEY_UP)
 		(*d)->sens = 2;
-	else if (kc == KEY_S)
+	else if (kc == KEY_DOWN)
 		(*d)->sens = 3;
 	else
 		return ;
@@ -42,13 +42,13 @@ void	move(int kc, t_data **d)
 	if ((*d)->level == 1 && col_beforemove(d,
 			(*d)->xy_mob, HX_MOB * 2, HY_MOB * 2))
 		return (damage_player(d));
-	if (kc == KEY_Z && col(d, -1, 32, t) && col(d, -1, 0, t))
+	if (kc == KEY_UP && col(d, -1, 32, t) && col(d, -1, 0, t))
 		(*d)->xy[1] -= 16;
-	else if (kc == KEY_Q && col(d, 0, -16, t) && col(d, 32, -16, t))
+	else if (kc == KEY_LEFT && col(d, 0, -16, t) && col(d, 32, -16, t))
 		(*d)->xy[0] -= 16;
-	else if (kc == KEY_S && col(d, 48, 0, t) && col(d, 48, 32, t))
+	else if (kc == KEY_DOWN && col(d, 48, 0, t) && col(d, 48, 32, t))
 		(*d)->xy[1] += 16;
-	else if (kc == KEY_D && col(d, 0, 48, t) && col(d, 32, 48, t))
+	else if (kc == KEY_RIGHT && col(d, 0, 48, t) && col(d, 32, 48, t))
 		(*d)->xy[0] += 16;
 	else
 		return ;
@@ -65,9 +65,9 @@ int	key_gestion(int keycode, t_data **d)
 		return (close_window(d, "Game end\n"));
 	else if (current_anim_fight(*d))
 		return (0);
-	else if (keycode == KEY_E && !current_anim_fight(*d))
+	else if (keycode == KEY_A1 && !current_anim_fight(*d))
 		(*d)->etat = 1;
-	else if (keycode == KEY_A && !current_anim_fight(*d))
+	else if (keycode == KEY_A2 && !current_anim_fight(*d))
 		(*d)->etat = 2;
 	set_sens(keycode, d);
 	move(keycode, d);

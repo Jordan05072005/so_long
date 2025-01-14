@@ -1,6 +1,6 @@
 NAME = so_long
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 RM = rm -f
 FRAMEDIR = ./mlx
 FRAMEWORK = -Lmlx -lmlx -Imlx -lXext -lX11 -lm -lz
@@ -16,11 +16,13 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME):	$(OBJ)
 	make -C src/libft
-	$(CC) $(OBJ) $(FRAMEWORK) -o $(NAME)  -L src/libft -lft
+	make -C mlx
+	$(CC) $(OBJ) $(FRAMEWORK) -no-pie -o $(NAME)  -L src/libft -lft
 
 all: $(NAME)
 
 clean:
+	make clean -C mlx
 	make clean -C src/libft
 	$(RM) $(OBJ)
 

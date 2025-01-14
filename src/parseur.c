@@ -12,11 +12,35 @@
 
 #include "../includes/so_long.h"
 
+int	valid(char **maps)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (maps[i])
+	{
+		j = 0;
+		while (maps[i][j])
+		{
+			if (maps[i][j] != WALL && maps[i][j] != EMPTY
+				&& maps[i][j] != COLLECTIBLE && maps[i][j] != PLAYER
+				&& maps[i][j] != MOB && maps[i][j] != EXITS)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	is_rectangle(char **maps)
 {
 	size_t	width;
 	int		i;
 
+	if (valid(maps))
+		return (1);
 	width = ft_strlen(maps[0]);
 	i = 1;
 	while (maps[i])
@@ -58,46 +82,29 @@ int	charfind(char **str, char find)
 
 int	is_possibly(char **maps, int x, int y)
 {
+	int	val;
+
+	val = 0;
 	if (x < 0 || y < 0 || (size_t)x >= ft_strlen(maps[0])
 		|| y >= ft_strstrlen(maps))
 		return (0);
-	if (maps[y][x] == wall)
+	if (maps[y][x] == WALL)
 		return (0);
-	else if (maps[y][x] == empty || maps[y][x] == collectible
-		|| maps[y][x] == player || maps[y][x] == mob)
+	else if (maps[y][x] == EMPTY || maps[y][x] == COLLECTIBLE
+		|| maps[y][x] == PLAYER || maps[y][x] == MOB)
 	{
+		if (maps[y][x] == COLLECTIBLE)
+			val = 1;
 		maps[y][x] = '1';
-		return (is_possibly(maps, x + 1, y)
+		return (val + is_possibly(maps, x + 1, y)
 			+ is_possibly(maps, x - 1, y)
 			+ is_possibly(maps, x, y + 1)
 			+ is_possibly(maps, x, y - 1));
 	}
-	else if (maps[y][x] == exits)
+	else if (maps[y][x] == EXITS)
 		return (1);
 	else
 		return (0);
-}
-
-int	valid(char **maps)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (maps[i])
-	{
-		j = 0;
-		while (maps[i][j])
-		{
-			if (maps[i][j] != wall && maps[i][j] != empty
-				&& maps[i][j] != collectible && maps[i][j] != player
-				&& maps[i][j] != mob && maps[i][j] != exits)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 char	**parseur(char *path)
@@ -122,9 +129,9 @@ char	**parseur(char *path)
 	maps = ft_split(str, "\r\n");
 	if (charfind(maps, 'E') != 1 || charfind(maps, 'C')
 		< 1 || charfind(maps, 'P') != 1 || charfind(maps, 'M') > 1)
-		return (free(str), NULL);
+		return (free_split(maps), free(str), NULL);
 	cpy = strrcpy(maps);
-	if (is_rectangle(maps) || is_possibly(cpy, 1, 3) == 0 || valid(maps))
-		return (free(str), free_split(cpy), NULL);
+	if (is_rectangle(maps) || is_possibly(cpy, 1, 3) != charfind(maps, 'C') + 1)
+		return (free_split(maps), free(str), free_split(cpy), NULL);
 	return (free(str), free_split(cpy), maps);
 }

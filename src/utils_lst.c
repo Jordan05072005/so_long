@@ -22,6 +22,8 @@ void	cpy(t_data **data)
 	(*data)->s_a[3] = 4;
 	(*data)->s_a[4] = 4;
 	(*data)->s_a[5] = 8;
+	(*data)->xy_mob[0] = -1;
+	(*data)->xy_mob[1] = -1;
 	(*data)->etat = 0;
 	(*data)->life = 3;
 	(*data)->sens_sprite = 0;

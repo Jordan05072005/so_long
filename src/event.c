@@ -16,10 +16,10 @@ void	animation(t_data **d, void **img)
 {
 	if ((*d)->frame % SECONDE == 0)
 	{
-		display((*d)->mlx, (*d)->win, (*d)->grassp, (*d)->xy[2],
-			(*d)->xy[3]);
-		display((*d)->mlx, (*d)->win, img[((*d)->frame / SECONDE)],
-			(*d)->xy[0], (*d)->xy[1]);
+		mlx_put_image_to_window((*d)->mlx, (*d)->win,
+			(*d)->grassp, (*d)->xy[2], (*d)->xy[3]);
+		mlx_put_image_to_window((*d)->mlx, (*d)->win,
+			img[((*d)->frame / SECONDE)], (*d)->xy[0], (*d)->xy[1]);
 	}
 	(*d)->frame++;
 	if ((*d)->frame >= (*d)->s_a[(*d)->etat] * SECONDE)
@@ -34,10 +34,10 @@ void	animation_static(t_data **d, void **img, int size, int *xy)
 {
 	if ((*d)->frame2 % SECONDE == 0)
 	{
-		display((*d)->mlx, (*d)->win, (*d)->grassp, xy[2],
+		mlx_put_image_to_window((*d)->mlx, (*d)->win, (*d)->grassp, xy[2],
 			xy[3]);
-		display((*d)->mlx, (*d)->win, img[((*d)->frame2 / SECONDE)],
-			xy[0], xy[1]);
+		mlx_put_image_to_window((*d)->mlx, (*d)->win,
+			img[((*d)->frame2 / SECONDE)], xy[0], xy[1]);
 	}
 	(*d)->frame2++;
 	if ((*d)->frame2 >= size * SECONDE)
@@ -91,17 +91,17 @@ void	delete(t_data **d, char select)
 {
 	int	i;
 
-	if (select == collectible)
+	if (select == COLLECTIBLE)
 	{
 		i = col_player_coins(d, HX_PLAYER * 2, HX_PLAYER * 2, HX_COLL * 2);
-		display((*d)->mlx, (*d)->win, (*d)->grassp,
+		mlx_put_image_to_window((*d)->mlx, (*d)->win, (*d)->grassp,
 			(*d)->xy_c[i][0], (*d)->xy_c[i][1]);
 		(*d)->xy_c[i][0] = -1;
 		(*d)->xy_c[i][1] = -1;
 	}
-	if (select == mob)
+	if (select == MOB)
 	{
-		display((*d)->mlx, (*d)->win, (*d)->grassp,
+		mlx_put_image_to_window((*d)->mlx, (*d)->win, (*d)->grassp,
 			(*d)->xy_mob[0] - SX_MOB, (*d)->xy_mob[1] - SY_MOB);
 		(*d)->xy_mob[0] = -1;
 		(*d)->xy_mob[1] = -1;

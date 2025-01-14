@@ -43,8 +43,8 @@ int	game_loop2(t_data **d)
 
 	level(d);
 	nbr = ft_itoa((*d)->keys_pressed);
-	display((*d)->mlx, (*d)->win, (*d)->bush, 0, 0);
-	display((*d)->mlx, (*d)->win, (*d)->bush, 64, 0);
+	mlx_put_image_to_window((*d)->mlx, (*d)->win, (*d)->bush, 0, 0);
+	mlx_put_image_to_window((*d)->mlx, (*d)->win, (*d)->bush, 64, 0);
 	button = ft_strjoin("button pressed : ", nbr);
 	mlx_string_put((*d)->mlx, (*d)->win, 0, 10, 0x00000, button);
 	(*d)->sens = -1;
@@ -55,10 +55,10 @@ int	game_loop(t_data **d)
 {
 	if ((*d)->level == 0
 		&& col_player_coins(d, HX_PLAYER * 2, HX_PLAYER * 2, HX_COLL * 2) != -1)
-		delete(d, collectible);
+		delete(d, COLLECTIBLE);
 	if (col_fight(d, (*d)->xy_mob, HX_MOB * 2, HY_MOB * 2)
 		&& current_anim_fight(*d) && (*d)->frame == 4 * SECONDE)
-		delete(d, mob);
+		delete(d, MOB);
 	if ((*d)->level == 1 && (*d)->xy_mob[0] != -1)
 		move_mob(d);
 	if ((*d)->level == 2

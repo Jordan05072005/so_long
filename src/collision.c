@@ -15,7 +15,7 @@
 //Collision character et mur pendant un déplacement
 int	col(t_data **d, int y, int x, int co[2])
 {
-	if ((*d)->maps[(co[1] + y) / 64][(co[0] + x) / 64] != wall)
+	if ((*d)->maps[(co[1] + y) / 64][(co[0] + x) / 64] != WALL)
 		return (1);
 	return (0);
 }
