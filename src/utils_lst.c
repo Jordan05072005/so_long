@@ -17,12 +17,14 @@ void	cpy(t_data **data)
 	int	temp;
 
 	(*data)->s_a[0] = 6;
-	(*data)->s_a[1] = 6;
+	(*data)->s_a[1] = 5;
 	(*data)->s_a[2] = 6;
 	(*data)->s_a[3] = 4;
 	(*data)->s_a[4] = 4;
 	(*data)->s_a[5] = 8;
 	(*data)->etat = 0;
+	(*data)->life = 3;
+	(*data)->sens_sprite = 0;
 	(*data)->level = 0;
 	(*data)->keys_pressed = 0;
 	(*data)->frame = 0;

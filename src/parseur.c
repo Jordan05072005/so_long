@@ -64,7 +64,7 @@ int	is_possibly(char **maps, int x, int y)
 	if (maps[y][x] == wall)
 		return (0);
 	else if (maps[y][x] == empty || maps[y][x] == collectible
-		|| maps[y][x] == player)
+		|| maps[y][x] == player || maps[y][x] == mob)
 	{
 		maps[y][x] = '1';
 		return (is_possibly(maps, x + 1, y)

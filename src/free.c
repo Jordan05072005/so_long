@@ -43,13 +43,17 @@ void	free_data(t_data **d)
 		free((*d)->xy_c[i]);
 	free((*d)->xy_c);
 	i = -1;
-	free_img(d, (*d)->idle, (*d)->s_a[0]);
-	free_img(d, (*d)->att1, (*d)->s_a[1]);
-	free_img(d, (*d)->att2, (*d)->s_a[2]);
-	free_img(d, (*d)->damage, (*d)->s_a[3]);
-	free_img(d, (*d)->death, (*d)->s_a[4]);
-	free_img(d, (*d)->walk, (*d)->s_a[5]);
+	while (++i != 2)
+	{
+		free_img(d, (*d)->idle[i], (*d)->s_a[0]);
+		free_img(d, (*d)->att1[i], (*d)->s_a[1]);
+		free_img(d, (*d)->att2[i], (*d)->s_a[2]);
+		free_img(d, (*d)->damage[i], (*d)->s_a[3]);
+		free_img(d, (*d)->death[i], (*d)->s_a[4]);
+		free_img(d, (*d)->walk[i], (*d)->s_a[5]);
+	}
 	free_img(d, (*d)->exit, 7);
+	free_img(d, (*d)->mobs, 4);
 	mlx_destroy_image((*d)->mlx, (*d)->grass);
 	mlx_destroy_image((*d)->mlx, (*d)->grassp);
 	mlx_destroy_image((*d)->mlx, (*d)->bush);

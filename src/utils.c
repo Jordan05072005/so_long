@@ -66,7 +66,7 @@ char	**strrcpy(char **str)
 
 int	current_anim_fight(t_data *d)
 {
-	if (d->etat == 1 || (d->etat == 2 && d->frame != 0))
+	if ((d->etat == 1 || d->etat == 2) && d->frame != 0)
 		return (1);
 	return (0);
 }

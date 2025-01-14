@@ -23,7 +23,14 @@ void	build2(t_data **d, int x, int y, int *i)
 	if ((*d)->maps[y][x] == player)
 	{
 		fill_co((*d)->xy, x * 64, y * 64);
-		display((*d)->mlx, (*d)->win, (*d)->idle[0], x * 64, y * 64);
+		display((*d)->mlx, (*d)->win, (*d)->idle[0][0], x * 64, y * 64);
+	}
+	if ((*d)->maps[y][x] == mob)
+	{
+		fill_co((*d)->xy_mob, x * 64 + SX_MOB, y * 64 + SY_MOB);
+		if ((*d)->level == 1)
+			display((*d)->mlx, (*d)->win, (*d)->mobs[0],
+				x * 64 + SX_MOB, y * 64 + SY_MOB);
 	}
 }
 

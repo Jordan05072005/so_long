@@ -12,22 +12,22 @@
 
 #include "../includes/so_long.h"
 
-int	loader_character2(t_data **d)
+int	loader_character2(t_data **d, int t)
 {
 	int	i;
 
 	i = -1;
-	while (++i < 6)
-		crop_img(d, &(*d)->att1[i], i * 100 + SX_P, 2 * 100 + SY_P);
+	while (++i < 5)
+		crop_img(d, &(*d)->att1[t][i], i * 100 + SX_P + 2, 2 * 100 + SY_P);
 	i = -1;
 	while (++i < 6)
-		crop_img(d, &(*d)->att2[i], i * 100 + SX_P, 3 * 100 + SY_P);
+		crop_img(d, &(*d)->att2[t][i], i * 100 + SX_P + 2, 3 * 100 + SY_P);
 	i = -1;
 	while (++i < 4)
-		crop_img(d, &(*d)->damage[i], i * 100 + SX_P, 4 * 100 + SY_P);
+		crop_img(d, &(*d)->damage[t][i], i * 100 + SX_P, 4 * 100 + SY_P);
 	i = -1;
 	while (++i < 4)
-		crop_img(d, &(*d)->death[i], i * 100 + SX_P, 5 * 100 + SY_P);
+		crop_img(d, &(*d)->death[t][i], i * 100 + SX_P, 5 * 100 + SY_P);
 	mlx_destroy_image((*d)->mlx, (*d)->img);
 	(*d)->img = NULL;
 	(*d)->data[0] = NULL;
@@ -50,12 +50,12 @@ int	loader_character(t_data **d, char *path, int scale, int t)
 	(*d)->data[0] = mlx_get_data_addr((*d)->img, &(*d)->bpp[0],
 			&(*d)->size_line[0], &(*d)->endian[0]);
 	while (++i < 6)
-		crop_img(d, &(*d)->idle[i], i * 100 + SX_P, 0 * 100 + SY_P);
+		crop_img(d, &(*d)->idle[t][i], i * 100 + SX_P, 0 * 100 + SY_P);
 	i = -1;
 	while (++i < 8)
-		crop_img(d, &(*d)->walk[i], i * 100 + SX_P, 1 * 100 + SY_P);
+		crop_img(d, &(*d)->walk[t][i], i * 100 + SX_P, 1 * 100 + SY_P);
 	i = -1;
-	loader_character2(d);
+	loader_character2(d, t);
 	return (0);
 }
 
@@ -105,5 +105,26 @@ int	loader_other(t_data **d)
 	(*d)->img = mlx_xpm_file_to_image((*d)->mlx,
 			"./assets/coll.xpm", &w, &h);
 	loader_other2(d, w, h);
+	return (0);
+}
+
+int	loader_mob(t_data **d)
+{
+	int	img_width;
+	int	img_height;
+	int	i;
+
+	i = -1;
+	(*d)->scale = 2;
+	(*d)->size = HX_MOB;
+	(*d)->img = mlx_xpm_file_to_image((*d)->mlx,
+			"./assets/mob.xpm", &img_width, &img_height);
+	if (!(*d)->img)
+		return (1);
+	(*d)->data[0] = mlx_get_data_addr((*d)->img, &(*d)->bpp[0],
+			&(*d)->size_line[0], &(*d)->endian[0]);
+	while (++i < 4)
+		crop_img(d, &(*d)->mobs[i], i * 32 + SX_MOB, 0 + SY_MOB);
+	mlx_destroy_image((*d)->mlx, (*d)->img);
 	return (0);
 }
