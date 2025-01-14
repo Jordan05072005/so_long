@@ -125,6 +125,7 @@ int		key_gestion(int keycode, t_data **data);
 int		init(char **argv, t_data **data);
 int		game_loop(t_data **d);
 int		close_window(t_data **d, char *message);
+int		close_windows(t_data **d);
 
 //Mob.c
 void	move_mob(t_data **d);

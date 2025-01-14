@@ -88,3 +88,9 @@ int	*find_coo(t_data **d, char find)
 	}
 	return (0);
 }
+
+int	close_windows(t_data **d)
+{
+	close_window(d, NULL);
+	return (1);
+}

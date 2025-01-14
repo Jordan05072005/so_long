@@ -81,7 +81,7 @@ int	close_window(t_data **d, char *message)
 	if (message)
 		ft_putstr_fd(message, 1);
 	else
-		ft_putstr_fd("Game End", 1);
+		ft_putstr_fd("Game End\n", 1);
 	exit(0);
 }
 
@@ -96,7 +96,7 @@ int	main(int argc, char **argv)
 	if (err)
 		error(1);
 	mlx_expose_hook(data->win, build_maps, &data);
-	mlx_hook(data->win, 17, 0, close_window, &data);
+	mlx_hook(data->win, 17, 0, close_windows, &data);
 	mlx_hook(data->win, 2, 1L << 0, key_gestion, &data);
 	mlx_loop_hook(data->mlx, game_loop, &data);
 	mlx_loop(data->mlx);
