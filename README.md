@@ -6,7 +6,7 @@ The goal of the game is to collect coins, then kill monsters.
 
 ### The keys to move are: 
 
-W -> up
+&ensp; &nbsp;W -> up
 
 A -> Left
 
