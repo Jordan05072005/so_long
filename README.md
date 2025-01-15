@@ -42,6 +42,7 @@ The goal of the game is to collect coins, then kill monsters.
 
 &ensp; &nbsp;(replace ... by the map of your choice)
 
+## Image of the game :
 
-
+![Capture d’écran 2025-01-16 004254](https://github.com/user-attachments/assets/bd1eab31-a2b8-49cf-9c17-74974ed3a6c6)
 
