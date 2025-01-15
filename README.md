@@ -15,7 +15,7 @@ The goal of the game is to collect coins, then kill monsters.
 |      Q      |   Attack 1  |
 |      E      |   Attack 2  |
 |    ESCAPE   |  Quit Game  |
------------------------------
+
 
 ### This map is made up of: 
 
