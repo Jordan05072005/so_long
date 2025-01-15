@@ -8,39 +8,39 @@ The goal of the game is to collect coins, then kill monsters.
 
 &ensp; &nbsp;W -> up
 
-A -> Left
+&ensp; &nbsp;A -> Left
 
-S -> Down
+&ensp; &nbsp;S -> Down
 
-D -> Right
+&ensp; &nbsp;D -> Right
 
-Q -> Attack 1
+&ensp; &nbsp;Q -> Attack 1
 
-E -> Attack 2
+&ensp; &nbsp;E -> Attack 2
 
-Escape -> Quit the game. 
+&ensp; &nbsp;Escape -> Quit the game. 
 
 ### This map is made up of: 
 
-1 -> wall
+&ensp; &nbsp;1 -> wall
 
-0 -> empty (grass)
+&ensp; &nbsp;0 -> empty (grass)
 
-P -> location of the player at the start
+&ensp; &nbsp;P -> location of the player at the start
 
-E -> location of the exit
+&ensp; &nbsp;E -> location of the exit
 
-M -> Mobs
+&ensp; &nbsp;M -> Mobs
 
-C -> Collectable (Coins) 
+&ensp; &nbsp;C -> Collectable (Coins) 
 
 ### The command to start this game is: 
 
-**_make_**
+&ensp; &nbsp;**_make_**
 
-**_./so_long maps/..._**
+&ensp; &nbsp;**_./so_long maps/..._**
 
-(replace ... by the map of your choice)
+&ensp; &nbsp;(replace ... by the map of your choice)
 
 
 
