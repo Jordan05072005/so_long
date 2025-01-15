@@ -6,19 +6,16 @@ The goal of the game is to collect coins, then kill monsters.
 
 ### The keys to move are: 
 
-&ensp; &nbsp;W -> up
-
-&ensp; &nbsp;A -> Left
-
-&ensp; &nbsp;S -> Down
-
-&ensp; &nbsp;D -> Right
-
-&ensp; &nbsp;Q -> Attack 1
-
-&ensp; &nbsp;E -> Attack 2
-
-&ensp; &nbsp;Escape -> Quit the game. 
+|    Keys     |    Effect   |
+|-------------|-------------|
+|      W      |      UP     |
+|      A      |     Left    |
+|      S      |     Down    |
+|      D      |     Right   |
+|      Q      |   Attack 1  |
+|      E      |   Attack 2  |
+|    ESCAPE   |  Quit Game  |
+-----------------------------
 
 ### This map is made up of: 
 
