@@ -19,17 +19,14 @@ The goal of the game is to collect coins, then kill monsters.
 
 ### This map is made up of: 
 
-&ensp; &nbsp;1 -> wall
-
-&ensp; &nbsp;0 -> empty (grass)
-
-&ensp; &nbsp;P -> location of the player at the start
-
-&ensp; &nbsp;E -> location of the exit
-
-&ensp; &nbsp;M -> Mobs
-
-&ensp; &nbsp;C -> Collectable (Coins) 
+|  **Sign**   |  **Asset**    |
+|-------------|---------------|
+|      0      |     Wall      |
+|      1      |     Empty     |
+|      P      | Locate Player |
+|      E      |  Locate Exit  | 
+|      M      |      Mobs     |
+|      C      |  Collectable  |
 
 ### The command to start this game is: 
 
